@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Public JavaScript and styles must remain crawlable.
+Sitemap: https://farma-lab-kimia-test.pages.dev/sitemap.xml

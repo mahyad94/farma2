@@ -1,0 +1,52 @@
+/* Inquiry-led business presentation; typography and colors follow the existing theme. */
+.hero-copy>.hero-rfq-note{max-width:480px;margin:15px 0 0;padding:0;font-size:11px;font-weight:400;line-height:1.9;color:var(--hero-text);opacity:.9}
+.rfq-process{margin-bottom:32px;padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:0 5px 18px #102b4e04}
+.rfq-process-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+.rfq-process-head .eyebrow{font-size:10px;letter-spacing:0;color:var(--link-color)}
+.rfq-process-head h2{margin:4px 0 0;font-size:20px;font-weight:800;line-height:1.7;color:var(--navy)}
+.rfq-process-head>.text-link{flex:0 0 auto;font-size:11px}
+.rfq-step-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;padding:0;margin:0}
+.rfq-step-list li{min-width:0}
+.rfq-step-list a{display:flex;align-items:flex-start;gap:11px;height:100%;padding:13px 0;border-top:1px solid var(--line);text-decoration:none}
+.rfq-step-number{display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;border-radius:9px;background:var(--info-background);color:var(--link-color);font-size:13px;font-weight:800}
+.rfq-step-list h3{margin:2px 0 6px;font-size:13px;font-weight:800;line-height:1.7;color:var(--navy)}
+.rfq-step-list p{margin:0;font-size:11px;line-height:1.95;color:var(--ink)}
+.rfq-step-list a:hover h3{color:var(--link-color)}
+.rfq-step-list a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:7px}
+.rfq-review{display:grid;grid-template-columns:.9fr 1.3fr;gap:35px;margin:0 0 34px;padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.rfq-review .info-section-heading h2{font-size:22px}
+.rfq-review .info-section-heading p{margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.95}
+.rfq-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0}
+.rfq-review-grid>div{min-width:0;padding-inline-start:12px;border-inline-start:2px solid color-mix(in srgb,var(--cyan) 35%,var(--line))}
+.rfq-review-grid dt{margin:0 0 5px;color:var(--navy);font-size:12px;font-weight:800}
+.rfq-review-grid dd{margin:0;color:var(--ink);font-size:12px;line-height:1.9}
+.info-inquiry-form #inquiry-code{font-family:"DM Sans","Vazirmatn",sans-serif;text-align:left}
+.searchbar input::placeholder,.header-search input::placeholder{font-family:"Vazirmatn","DM Sans",sans-serif}
+.searchbar input:placeholder-shown,.header-search input:placeholder-shown{direction:rtl;text-align:right}
+.quote-trigger svg{stroke-linecap:round;stroke-linejoin:round}
+.catalog-page .product-grade{min-height:26px}
+.catalog-page .product-grade span{font-size:10px}
+.catalog-page .price-contact{font-size:10px;color:var(--link-color);font-weight:600}
+.info-contact-help .info-help-questions details:last-child{border-bottom:0}
+@media(max-width:1000px){
+ .rfq-step-list{gap:15px}
+ .rfq-process{padding:20px}
+ .rfq-review{grid-template-columns:1fr 1.3fr;gap:25px}
+}
+@media(max-width:720px){
+ .hero-copy>.hero-rfq-note{font-size:10px;line-height:1.9}
+ .rfq-process{margin-bottom:24px;padding:18px;border-radius:15px}
+ .rfq-process-head{align-items:flex-start;flex-direction:column;gap:8px;margin-bottom:12px}
+ .rfq-process-head h2{font-size:18px}
+ .rfq-process-head>.text-link{font-size:10px}
+ .rfq-step-list{grid-template-columns:1fr;gap:0}
+ .rfq-step-list a{padding-block:13px}
+ .rfq-step-list h3{font-size:12px}
+ .rfq-step-list p{font-size:11px}
+ .rfq-review{grid-template-columns:1fr;gap:20px;margin-bottom:25px;padding:21px;border-radius:16px}
+ .rfq-review .info-section-heading h2{font-size:20px}
+ .rfq-review-grid{gap:18px 13px}
+ .rfq-review-grid dt,.rfq-review-grid dd{font-size:11px}
+ .catalog-page .price-contact{font-size:9px}
+}
+@media(max-width:370px){.rfq-review-grid{grid-template-columns:1fr}}

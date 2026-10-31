@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fa-IR" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#102b4e" />
+  <title>مدیریت سایت | Farma Lab Kimia</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css?v=taxonomy-20261027-r1" />
+  <link rel="stylesheet" href="admin-workspace.css?v=bulk-images-20261028" />
+  <link rel="stylesheet" href="taxonomy-pyramid.css?v=taxonomy-20261027-r1" />
+  <script src="supabase-config.js"></script>
+  <script src="catalog-taxonomy-data.js"></script>
+  <script src="catalog-taxonomy.js"></script>
+  <script src="jszip.min.js?v=3.10.1"></script>
+  <script type="module" src="supabase-client.js"></script>
+  <script type="module" src="admin.js?v=category-path-20261028"></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-top"><a class="admin-brand" href="index.html"><span class="brand-mark">⚗</span><span><b>Farma Lab Kimia</b><small>مدیریت محتوای سایت</small></span></a><span class="secure-badge">ورود امن مدیر</span></header>
+    <section class="login-card" id="login-view">
+      <span class="eyebrow">FARMA LAB KIMIA · ADMIN</span><h1>ورود به پنل مدیریت</h1><p>برای ویرایش کاتالوگ و محتوای سایت، با ایمیل مدیر وارد شوید.</p>
+      <div class="setup-alert" id="setup-alert" hidden><b>پنل هنوز به Supabase وصل نشده است.</b><span>ابتدا پروژه Supabase را بسازید و نشانی پروژه و کلید عمومی را در فایل تنظیمات وارد کنید.</span><a href="supabase/SETUP.md">راهنمای اتصال</a></div>
+      <form id="login-form"><label>ایمیل مدیر<input name="email" type="email" autocomplete="username" required placeholder="admin@example.com" /></label><label>رمز عبور<input name="password" type="password" autocomplete="current-password" required /></label><button class="primary-button" type="submit">ورود به پنل</button><p class="form-message" id="login-message" role="status"></p></form>
+      <button class="text-button" id="request-password-reset" type="button">تعیین یا فراموشی رمز عبور</button><p class="form-message" id="reset-request-message" role="status"></p>
+      <a class="back-link" href="index.html">بازگشت به وب‌سایت</a>
+    </section>
+    <section class="login-card" id="password-reset-view" hidden>
+      <span class="eyebrow">FARMA LAB KIMIA · ADMIN</span><h1>تعیین رمز عبور</h1><p>رمز تازه‌ای برای ورود امن به پنل مدیریت انتخاب کنید.</p>
+      <form id="password-reset-form"><label>رمز عبور جدید<input name="password" type="password" autocomplete="new-password" minlength="10" required /></label><label>تکرار رمز عبور<input name="password_confirmation" type="password" autocomplete="new-password" minlength="10" required /></label><button class="primary-button" type="submit">ذخیره رمز عبور</button><p class="form-message" id="password-reset-message" role="status"></p></form>
+    </section>
+    <section class="dashboard" id="dashboard-view" hidden>
+      <div class="dashboard-heading"><div><span class="eyebrow">FARMA LAB KIMIA · WORKSPACE</span><h1>مدیریت سایت</h1><p id="signed-in-email"></p></div><button class="quiet-button" id="signout-button">خروج امن</button></div>
+      <nav class="dashboard-tabs" role="tablist" aria-label="بخش‌های مدیریت">
+        <button class="tab-button is-active" data-tab="overview" role="tab" aria-selected="true">نمای کلی</button>
+        <button class="tab-button" data-tab="products" role="tab" aria-selected="false">محصولات</button>
+        <button class="tab-button" data-tab="taxonomy" role="tab" aria-selected="false">دسته‌بندی‌ها</button>
+        <button class="tab-button" data-tab="articles" role="tab" aria-selected="false">مقالات</button>
+        <button class="tab-button" data-tab="media" role="tab" aria-selected="false">رسانه</button>
+        <button class="tab-button" data-tab="content" role="tab" aria-selected="false">ویرایش سایت</button>
+        <button class="tab-button" data-tab="email" role="tab" aria-selected="false">ایمیل</button>
+      </nav>
+      <section class="tab-panel is-active" id="overview-panel">
+        <div class="workspace-welcome"><div><span class="eyebrow">خوش آمدید</span><h2>از اینجا محتوای فارما لب کیمیا را مدیریت کنید</h2><p>محصولات، مقاله‌ها، تصاویر و متن‌های سایت را از یک پنل سامان‌دهی کنید.</p></div><a class="secondary-button" href="index.html" target="_blank" rel="noopener">مشاهده وب‌سایت ↗</a></div>
+        <div class="dashboard-metrics"><article><span>محصولات</span><b id="metric-products">—</b><small>در پایگاه داده</small></article><article><span>مقالات منتشرشده</span><b id="metric-published">—</b><small>قابل مشاهده برای بازدیدکنندگان</small></article><article><span>پیش‌نویس‌ها</span><b id="metric-drafts">—</b><small>آماده تکمیل و انتشار</small></article><article><span>رسانه‌ها</span><b id="metric-media">—</b><small>تصاویر بارگذاری‌شده</small></article></div>
+        <div class="quick-actions"><button class="quick-action" data-go-tab="articles" data-create-article><span>＋</span><b>نوشتن مقاله</b><small>پیش‌نویس تازه بسازید یا مطلبی را منتشر کنید.</small></button><button class="quick-action" data-go-tab="products" data-create-product><span>＋</span><b>افزودن محصول</b><small>محصول جدیدی به کاتالوگ اضافه کنید.</small></button><button class="quick-action" data-go-tab="media"><span>▧</span><b>مدیریت رسانه</b><small>تصاویر سایت را بارگذاری و سازمان‌دهی کنید.</small></button></div>
+
+        <div class="admin-section-shortcuts" id="overview-editor-shortcuts"></div>
+        <div class="admin-help"><b>تغییر محتوای سایت بدون بارگذاری فایل</b><br />محصولات، مقاله‌ها و تنظیمات پس از ذخیره از پایگاه داده خوانده می‌شوند. برای تغییر آن‌ها نیازی به انتشار دوباره فایل‌های سایت نیست.</div>
+      </section>
+      <section class="tab-panel" id="products-panel">
+        <div class="toolbar"><div><h2>کاتالوگ محصولات</h2><p>برای انتقال تصویرها همراه محصول، CSV تصویردار یا بستهٔ ZIP حاوی CSV و تصاویر را وارد کنید. سپس می‌توانید پیش‌نویس‌های انتخاب‌شده را گروهی تأیید و منتشر کنید.</p></div><div class="toolbar-actions"><label class="secondary-button file-button">ورود CSV + تصاویر ZIP<input id="product-archive-import" type="file" accept=".zip,application/zip" /></label><label class="secondary-button file-button">ورود / به‌روزرسانی CSV<input id="csv-import" type="file" accept=".csv,text/csv" /></label><button class="secondary-button" id="csv-export">خروجی کامل CSV</button><button type="button" class="secondary-button" id="csv-template">قالب CSV خالی</button><button class="secondary-button" id="new-product-from-link">افزودن از لینک</button><button class="primary-button" id="new-product">افزودن دستی ＋</button></div></div>
+
+        <div class="catalog-stats" id="product-status-tabs" role="group" aria-label="وضعیت محصولات"></div>
+        <div class="catalog-filters-admin">
+          <label class="search-wide">جستجو در محصولات<input id="product-search" type="search" placeholder="نام، CAS، شماره کاتالوگ یا منبع" /></label>
+          <label>دسته‌بندی<select id="product-category-filter"><option value="">همه دسته‌ها</option></select></label>
+          <label>زیر دسته<select id="product-subcategory-filter"><option value="">همه زیر دسته‌ها</option></select></label>
+          <label>برند<select id="product-brand-filter"><option value="">همه برندها</option></select></label>
+          <label>مرتب‌سازی<select id="product-order"><option value="name-asc">نام: A تا Z</option><option value="name-desc">نام: Z تا A</option><option value="updated">آخرین ویرایش</option><option value="category">دسته‌بندی</option></select></label>
+        </div>
+        <div class="catalog-filter-meta"><span id="product-count" role="status">در حال بارگذاری…</span><div><button type="button" class="text-button" id="refresh-products">تازه‌سازی فهرست</button><button type="button" class="text-button" id="select-filtered-products">انتخاب همه نتایج</button><button type="button" class="text-button" id="export-filtered">خروجی نتایج فیلترشده</button><button type="button" class="text-button" id="reset-product-filters">پاک کردن فیلترها</button></div></div>
+        <div class="selection-toolbar" id="product-bulk-toolbar" hidden><div class="selection-heading"><b id="product-selection-count"></b><small id="product-selection-scope"></small></div><div class="selection-actions"><button type="button" class="primary-button" id="publish-selected-products">تأیید و انتشار انتخاب‌ها</button><button type="button" class="secondary-button" data-bulk-active="false">پنهان کردن</button><button type="button" class="secondary-button" id="export-selected-products">خروجی انتخاب‌ها</button><button type="button" class="danger-button" id="delete-selected-products">حذف انتخاب‌ها</button><button type="button" class="text-button" id="clear-product-selection">لغو انتخاب</button></div></div>
+        <p class="catalog-notice" id="products-message" role="status" aria-live="polite"></p>
+        <div class="table-wrap"><table class="product-admin-table"><thead><tr><th><input type="checkbox" id="select-page-products" aria-label="انتخاب محصولات این صفحه" /></th><th>محصول / شناسه</th><th>دسته و زیر دسته</th><th>برند</th><th>وضعیت سایت</th><th>عملیات</th></tr></thead><tbody id="product-rows"></tbody></table><div class="empty-table" id="empty-products" hidden>محصولی با این فیلترها پیدا نشد.</div></div>
+        <div class="table-pagination"><label>در هر صفحه<select id="product-page-size"><option value="25">۲۵</option><option value="50">۵۰</option><option value="100">۱۰۰</option></select></label><span id="product-page-info"></span><div><button type="button" id="product-prev">قبلی →</button><button type="button" id="product-next">← بعدی</button></div></div>
+
+      </section>
+      <section class="tab-panel" id="articles-panel">
+        <div class="toolbar"><div><h2>نوشته‌ها و مقاله‌ها</h2><p>پیش‌نویس بسازید، مقاله را ویرایش کنید یا آن را در سایت منتشر کنید.</p></div><div class="toolbar-actions"><button class="primary-button" id="new-article">مقاله جدید ＋</button></div></div>
+        <div class="product-tools"><input id="article-search" type="search" placeholder="جستجو در عنوان، دسته یا برچسب" /><select id="article-status-filter" aria-label="فیلتر وضعیت مقاله"><option value="">همه وضعیت‌ها</option><option value="published">منتشرشده</option><option value="draft">پیش‌نویس</option><option value="archived">بایگانی‌شده</option></select><span id="article-count">در حال بارگذاری…</span></div>
+        <div class="table-wrap"><table class="article-table"><thead><tr><th>عنوان</th><th>دسته</th><th>وضعیت</th><th>آخرین ویرایش</th><th></th></tr></thead><tbody id="article-rows"></tbody></table><div class="empty-table" id="empty-articles" hidden>هنوز مقاله‌ای ثبت نشده است. اولین مقاله را بنویسید.</div></div>
+      </section>
+      <section class="tab-panel" id="media-panel">
+        <div class="toolbar"><div><h2>کتابخانه رسانه</h2><p>تصاویر مقاله و محتوای سایت را بارگذاری کنید و نشانی آن‌ها را مدیریت کنید.</p></div><label class="primary-button file-button">بارگذاری تصویر ＋<input id="media-upload" type="file" accept="image/png,image/jpeg,image/webp" multiple /></label></div>
+        <p class="media-help">PNG، JPG و WebP · حداکثر ۵ مگابایت برای هر تصویر</p><p class="form-message" id="media-message" role="status" aria-live="polite"></p>
+        <div class="media-grid" id="media-grid"></div><div class="empty-table" id="empty-media" hidden>تصویری بارگذاری نشده است.</div>
+      </section>
+      <section class="tab-panel" id="email-panel">
+        <div class="email-setup-card"><span class="email-setup-icon">✉</span><div><span class="eyebrow">MAILBOX · SETUP REQUIRED</span><h2>اتصال صندوق ایمیل کاری</h2><p>فعلاً صندوق ایمیل دامنه به این پنل وصل نیست. بعد از تهیه دامنه، ساخت حساب ایمیل و انتخاب ارائه‌دهنده، می‌توان پیام‌ها را با اتصال امن OAuth/API در همین پنل نمایش داد. رمز Gmail یا ایمیل را اینجا وارد نکنید.</p><div class="email-connection-status"><span></span>اتصال ایمیل هنوز راه‌اندازی نشده</div><small>برای شروع اتصال، فقط ارائه‌دهنده ایمیل کاری و دامنه نهایی لازم است؛ رمز حساب شخصی شما نیاز نیست.</small></div></div>
+      </section>
+
+      <section class="tab-panel" id="taxonomy-panel">
+        <div class="toolbar"><div><h2>دسته‌بندی‌های کاتالوگ</h2><p>هر سطح هرم را به فارسی و انگلیسی ویرایش کنید؛ دسته‌های پنهان به همراه زیرگروه‌هایشان از سایت کنار می‌روند.</p><span id="taxonomy-mode-note"></span></div><div class="toolbar-actions"><button class="secondary-button" type="button" id="taxonomy-discard" disabled>لغو تغییرات</button><button class="primary-button" type="button" id="taxonomy-save" disabled>ذخیره دسته‌بندی‌ها</button></div></div>
+        <div class="taxonomy-editor-meta"><span id="taxonomy-state" role="status"></span><span id="taxonomy-counts"></span></div>
+        <div class="taxonomy-editor-layout"><aside class="taxonomy-editor-browser"><label>جستجو در همه سطح‌ها<input id="taxonomy-admin-search" type="search" placeholder="نام فارسی یا انگلیسی دسته" /></label><div id="taxonomy-admin-list" class="taxonomy-admin-list"></div><button class="secondary-button" type="button" id="taxonomy-add-root">افزودن دسته اصلی ＋</button></aside><section class="taxonomy-editor-detail"><nav id="taxonomy-path" class="taxonomy-editor-path" aria-label="مسیر دسته"></nav><div class="taxonomy-editor-heading"><h3>ویرایش دسته</h3><small dir="ltr">ID: <span id="taxonomy-node-id"></span></small></div><div class="taxonomy-editor-fields"><label>نام فارسی<input id="taxonomy-name-fa" dir="rtl" maxlength="180" required /></label><label>نام انگلیسی<input id="taxonomy-name-en" dir="ltr" lang="en" maxlength="180" required /></label></div><label class="taxonomy-visibility"><input id="taxonomy-visible" type="checkbox" /> نمایش این دسته و زیرگروه‌ها</label><p id="taxonomy-visibility-note"></p><p id="taxonomy-product-count"></p><div class="taxonomy-editor-actions"><button class="secondary-button" type="button" id="taxonomy-add-child">افزودن زیرگروه ＋</button><button class="danger-button" type="button" id="taxonomy-delete">حذف این شاخه</button></div><h4>زیرگروه‌های مستقیم</h4><div id="taxonomy-current-children" class="taxonomy-admin-list"></div><p class="form-message" id="taxonomy-message" role="status" aria-live="polite"></p></section></div>
+      </section>
+      <section class="tab-panel" id="content-panel">
+        <div class="editor-topbar"><div class="toolbar"><div><h2>ویرایش وب‌سایت</h2><p>بخش مورد نظر را انتخاب کنید، تغییر دهید و پیش از ذخیره پیش‌نمایش را ببینید.</p><span class="save-indicator" id="content-save-status" role="status">در حال دریافت تنظیمات…</span></div><div class="toolbar-actions"><button class="secondary-button" type="button" id="preview-content">پیش‌نمایش</button><button class="secondary-button" type="button" id="discard-content">لغو تغییرات</button><button class="primary-button" id="save-content" type="submit" form="content-form">ذخیره در سایت</button></div></div></div>
+        <form id="content-form" class="content-editor">
+          <div class="site-editor-layout"><aside class="editor-sidebar"><input type="search" class="editor-search" id="content-search" placeholder="جستجوی بخش یا تنظیم…" aria-label="جستجو در تنظیمات سایت" /><nav id="content-section-nav" class="editor-section-nav" aria-label="بخش‌های ویرایش سایت"></nav></aside><div><div id="content-fields"></div><p class="form-message" id="content-message" role="status" aria-live="polite"></p></div></div>
+        </form>
+      </section>
+    </section>
+  </main>
+  <datalist id="subcategory-suggestions"></datalist>
+  <dialog id="article-dialog" class="article-dialog"><form id="article-form"><div class="dialog-heading"><div><span class="eyebrow">EDITORIAL</span><h2 id="article-dialog-title">مقاله جدید</h2></div><button class="icon-button" type="button" data-close-article aria-label="بستن">×</button></div><input name="id" type="hidden" /><div class="article-form-grid"><label class="span-2">عنوان مقاله *<input name="title" maxlength="180" required /></label><label>پیوند یکتا<input name="slug" dir="ltr" placeholder="برای نمونه: laboratory-safety" /></label><label>دسته‌بندی<input name="category" list="article-categories" placeholder="مثلاً راهنمای آزمایشگاه" /></label><datalist id="article-categories"></datalist><label class="span-2">خلاصه مقاله<textarea name="excerpt" rows="2" maxlength="360" placeholder="خلاصه کوتاهی برای فهرست مقاله‌ها"></textarea></label><label class="span-2">تصویر شاخص<div class="cover-image-control"><input name="cover_image_url" type="url" placeholder="پیوند تصویر یا انتخاب از کتابخانه رسانه" dir="ltr" /><button type="button" class="secondary-button" id="choose-cover">انتخاب تصویر</button></div></label><label class="span-2 editor-label">متن مقاله *<div class="rich-toolbar" role="toolbar" aria-label="قالب‌بندی متن"><button type="button" data-editor-command="bold"><b>B</b></button><button type="button" data-editor-command="italic"><i>I</i></button><button type="button" data-editor-command="formatBlock" data-editor-value="h2">عنوان بخش</button><button type="button" data-editor-command="insertUnorderedList">فهرست</button><button type="button" data-editor-command="formatBlock" data-editor-value="blockquote">نقل‌قول</button></div><div id="article-body-editor" class="rich-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="متن مقاله"></div></label><label>برچسب‌ها<input name="tags" placeholder="با ویرگول جدا کنید" /></label><label>وضعیت<select name="status"><option value="draft">پیش‌نویس</option><option value="published">انتشار در سایت</option><option value="archived">بایگانی</option></select></label></div><p class="form-message" id="article-message" role="status" aria-live="polite"></p><div class="dialog-actions"><button class="secondary-button" type="button" data-close-article>لغو</button><button class="primary-button" type="submit">ذخیره مقاله</button></div></form></dialog>
+
+  <dialog id="product-link-dialog" class="product-dialog product-link-dialog"><form id="product-link-form"><div class="dialog-heading"><div><span class="eyebrow">SIGMA-ALDRICH</span><h2>افزودن از لینک سیگما</h2></div><button class="icon-button" type="button" data-close-product-link-dialog aria-label="بستن">×</button></div><p class="product-link-help">پیوند صفحهٔ محصول سیگما آلدریچ را وارد کنید. محصول به‌صورت پیش‌نویس ذخیره می‌شود؛ اطلاعات فارسی پس از بررسی تکمیل می‌شود و پیوند SDS فقط در صورت وجود افزوده می‌شود.</p><label class="product-link-field">پیوند صفحهٔ محصول<input name="url" type="url" dir="ltr" inputmode="url" placeholder="https://www.sigmaaldrich.com/TR/en/product/sigald/442410" required /></label><p class="form-message" id="product-link-message" role="status"></p><div class="dialog-actions"><button class="secondary-button" type="button" data-close-product-link-dialog>انصراف</button><button class="primary-button" type="submit">ساخت پیش‌نویس</button></div></form></dialog>
+
+  <dialog id="product-dialog" class="product-dialog"><form id="product-form"><div class="dialog-heading"><div><span class="eyebrow">PRODUCT RECORD</span><h2 id="dialog-title">محصول جدید</h2></div><button class="icon-button" type="button" data-close-product-dialog aria-label="بستن">×</button></div><input name="id" type="hidden" />
+    <div class="product-editor-sections">
+      <fieldset class="product-editor-section"><legend>۱. اطلاعات اصلی</legend><div class="form-grid">
+        <label>نام انگلیسی محصول *<input name="name_en" dir="ltr" required /></label><label>نام فارسی محصول<input name="detail_name_fa" dir="rtl" placeholder="نام رایج علمی در کاتالوگ فارسی" /></label><label>برند<input name="brand" list="product-brand-suggestions" dir="ltr" /></label><label>شماره کاتالوگ<input name="product_number" dir="ltr" /></label><label>شماره CAS<input name="cas_number" dir="ltr" /></label><label>دسته‌بندی اصلی<select name="category" required></select></label><label>زیرگروه دقیق<select name="subcategory"><option value="">ابتدا دسته اصلی را انتخاب کنید</option></select></label>
+      </div></fieldset>
+      <fieldset class="product-editor-section"><legend>۲. مشخصات و توضیحات</legend><div class="form-grid">
+        <label>درجه / خلوص<input name="grade_purity" dir="auto" /></label><label>بسته‌بندی<input name="pack_size" dir="auto" /></label><label class="span-2">شرح انگلیسی<textarea name="description_en" dir="ltr" rows="4"></textarea></label><label class="span-2">شرح فارسی (اختیاری)<textarea name="description_fa" rows="3"></textarea></label>
+      </div></fieldset>
+      <details class="product-detail-editor" id="product-detail-editor"><summary>صفحهٔ تفصیلی محصول · مطابق الگوی سیگما آلدریچ</summary><div class="product-detail-fields">
+        <label class="check-field"><input name="detail_enabled" type="checkbox" /> نمایش صفحهٔ تفصیلی پس از تأیید و انتشار</label>
+        <label>دربارهٔ محصول · هر سطر «عنوان: مقدار»<textarea name="detail_about" rows="5" placeholder="فرمول خطی: LiOH&#10;شماره CAS: 1310-65-2"></textarea></label>
+        <label>توضیح کلی<textarea name="detail_general" rows="4"></textarea></label>
+        <label>کاربردها · هر مورد در یک سطر<textarea name="detail_applications" rows="4"></textarea></label>
+        <label>ویژگی‌ها · هر سطر «عنوان: مقدار»<textarea name="detail_properties" rows="5"></textarea></label>
+        <label>پیوند SDS (در صورت وجود)<input name="detail_sds_url" type="url" dir="ltr" placeholder="https://..." /></label>
+        <label>خلاصهٔ ایمنی محصولات قبلی · اختیاری<textarea name="detail_safety" rows="5"></textarea></label>
+        <label>یادداشت ایمنی محصولات قبلی · اختیاری<textarea name="detail_sds_note" rows="2"></textarea></label>
+      </div></details>
+      <section class="product-questions-admin" id="product-questions-admin" hidden><h3>پرسش‌های این محصول</h3><div id="product-question-rows"></div><p class="form-message" id="product-question-message" role="status"></p></section>
+      <fieldset class="product-editor-section"><legend>۳. تصویر و برگه فنی</legend><div class="form-grid">
+        <label class="span-2">نشانی تصویر<input name="image_url" type="url" dir="ltr" /></label><label>بارگذاری تصویر<input id="image-upload" type="file" accept="image/png,image/jpeg,image/webp" /></label><label>نشانی برگه فنی<input name="technical_document_url" type="url" dir="ltr" /></label>
+      </div></fieldset>
+      <fieldset class="product-editor-section"><legend>۴. منبع و انتشار</legend><p>نمایش در سایت به فعال بودن محصول و تأیید اطلاعات آن بستگی دارد.</p><div class="form-grid">
+        <label>نام منبع<input name="source_name" /></label><label>پیوند منبع<input name="source_url" type="url" dir="ltr" /></label><label>منبع تکمیلی<input name="additional_source_name" /></label><label>پیوند تکمیلی<input name="additional_source_url" type="url" dir="ltr" /></label><label class="check-field"><input name="usage_permission_confirmed" type="checkbox" /> انتشار اطلاعات/تصویر تأیید شده</label><label class="check-field"><input name="active" type="checkbox" /> نمایش در کاتالوگ</label>
+      </div></fieldset>
+    </div>
+    <p class="form-message" id="product-message" role="status"></p><div class="dialog-actions"><a class="secondary-button product-preview-link" id="preview-product-detail" target="_blank" rel="noopener noreferrer" hidden>پیش‌نمایش صفحهٔ محصول ↗</a><button class="secondary-button" type="button" data-close-product-dialog>لغو و بستن</button><button class="primary-button" id="save-product" type="submit">ذخیره محصول</button></div>
+  </form></dialog>
+  <datalist id="product-brand-suggestions"></datalist>
+  <dialog id="site-preview-dialog" class="preview-dialog"><div class="preview-toolbar"><b>پیش‌نمایش تغییرات ذخیره‌نشده</b><button type="button" class="secondary-button" data-preview-width="100%">رایانه</button><button type="button" class="secondary-button" data-preview-width="390px">موبایل</button><button type="button" class="icon-button" id="close-preview" aria-label="بستن پیش‌نمایش">×</button></div><div class="preview-frame-wrap"><iframe id="site-preview-frame" title="پیش‌نمایش وب‌سایت"></iframe></div></dialog>
+  <input type="file" id="content-image-upload" class="editor-upload" accept="image/png,image/jpeg,image/webp" />
+
+  <dialog id="product-delete-dialog" class="product-delete-dialog" aria-labelledby="product-delete-title" aria-describedby="product-delete-description">
+    <div class="delete-dialog-heading"><span aria-hidden="true">⌫</span><div><h2 id="product-delete-title">حذف <b id="delete-product-count"></b> محصول</h2><p>پیش از حذف، انتخاب‌ها را بررسی کنید.</p></div></div>
+    <p id="product-delete-description">محصولات زیر از پایگاه داده حذف می‌شوند. این کار از پنل قابل بازگشت نیست. می‌توانید پیش از ادامه، خروجی CSV انتخاب‌ها را دریافت کنید.</p>
+    <ul id="delete-product-list"></ul>
+    <button type="button" class="secondary-button" id="download-delete-selection">دریافت خروجی پیش از حذف</button>
+    <label class="delete-confirm-check"><input type="checkbox" id="confirm-delete-check" /> حذف دائمی محصولات فهرست‌شده را تأیید می‌کنم.</label>
+    <div class="delete-dialog-actions"><button type="button" class="secondary-button" id="cancel-product-delete" autofocus>انصراف</button><button type="button" class="danger-button" id="confirm-product-delete" disabled>حذف دائمی</button></div>
+  </dialog>
+  <dialog id="product-publish-dialog" class="product-delete-dialog" aria-labelledby="product-publish-title">
+    <div class="delete-dialog-heading"><span aria-hidden="true">✓</span><div><h2 id="product-publish-title">انتشار گروهی <b id="publish-product-count"></b> محصول</h2><p>محصولات انتخاب‌شده در کاتالوگ عمومی نمایش داده می‌شوند.</p></div></div>
+    <p id="product-publish-summary"></p>
+    <label class="delete-confirm-check"><input type="checkbox" id="confirm-product-usage" /> اطلاعات و حق استفاده از متن و تصاویر این محصولات را بررسی و تأیید کرده‌ام.</label>
+    <div class="delete-dialog-actions"><button type="button" class="secondary-button" id="cancel-product-publish" autofocus>انصراف</button><button type="button" class="primary-button" id="confirm-product-publish" disabled>تأیید و انتشار</button></div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,167 @@
+:root{--page-background:#ffffff;--surface:#ffffff;--soft:#f6f8fa;--navy:#102b4e;--ink:#17283c;--muted:#738294;--line:#e1e8ed;--cyan:#45aeb2;--link-color:#317c87;--header-background:#ffffff;--topline-background:#f4f7f9;--topline-text:#6a7685;--nav-text:#40536a;--input-background:#ffffff;--input-text:#33465a;--placeholder-color:#68717b;--input-border:#bac6d0;--purple:#583a9b;--search-text:#ffffff;--logo-icon:#79d4ce;--hero-start:#0e294a;--hero-middle:#123456;--hero-end:#1b4d68;--hero-title:#ffffff;--hero-text:#c5d3df;--hero-accent:#8cdbd3;--illustration-accent:#65c6c2;--hero-outline-background:#23455f;--hero-outline-text:#ffffff;--hero-outline-border:#7791a7;--primary-background:#59bcb8;--primary-text:#0b2b46;--primary-hover:#79d4cc;--secondary-background:#ffffff;--secondary-text:#102b4e;--secondary-border:#d1dce4;--quick-add-background:#102b4e;--quick-add-text:#ffffff;--whatsapp-background:#299f64;--whatsapp-text:#ffffff;--email-background:#ffffff;--email-text:#375b70;--filter-background:#ffffff;--product-image-start:#f8fbfc;--product-image-end:#eff5f6;--product-image-circle:#e8f2f1;--product-title:#263c53;--product-badge-background:#ffffff;--product-badge-text:#48637c;--quote-button-background:#f2faf9;--quote-button-text:#276e76;--quote-button-border:#a9d7d4;--info-background:#f0f7f6;--info-text:#667e83;--toast-background:#102b4e;--toast-text:#ffffff;--category-0-background:#eaf6f3;--category-0-text:#287b83;--category-1-background:#eef2f8;--category-1-text:#36547d;--category-2-background:#f0f4f6;--category-2-text:#5b8091;--category-3-background:#f0edf9;--category-3-text:#7560a9;--category-4-background:#f4f4ef;--category-4-text:#788358;--faq-answer:#607286;--faq-icon-background:#eaf6f3;--faq-icon-text:#287e87;--brand-sigma:#4d9697;--brand-merck:#2186a0;--brand-supelco:#517bb3;--brand-millipore:#569a47;--about-background:#102b4e;--about-title:#ffffff;--about-text:#bdccda;--about-icon:#78d1c9;--footer-background:#f3f6f8;--footer-heading:#344a60;--footer-text:#7b8996;--white:var(--surface);}
+:root{--nav-background:#583a9b}
+/* Theme color layer. Layout remains in the component stylesheets. */
+body,body.catalog-page,body.articles-page{background:var(--page-background)!important;color:var(--ink)}
+.topline{background:var(--topline-background)!important;color:var(--topline-text)!important}
+.site-header{background:var(--header-background)!important;border-color:var(--line)!important}
+.site-header > .nav{position:relative}
+.site-header > .nav::before{content:"";position:absolute;inset-block:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--nav-background);z-index:-1;pointer-events:none}
+.nav,.nav-parent-link,.nav>a,.article-header nav{color:var(--nav-text)!important}
+.nav a:hover,.nav-parent-link:hover,.article-header nav a:hover,.article-header nav a[aria-current=page]{color:var(--link-color)!important}
+.site-header > .nav,.site-header > .nav > a,.site-header > .nav .nav-parent-link,.site-header > .nav .nav-submenu-toggle,.site-header > .nav > a:hover{color:var(--search-text)!important}
+.nav>a:hover:after{background:var(--cyan)!important}
+.brand,.brand-name,.section-head h2,.catalog-page .catalog-section .section-head h2,.catalog-category-heading h3,.category-text b,.filter-heading,.filter-group>b,.detail-content h2,.drawer-head h2,.seo-guide h2,.articles-intro h1,.public-article h1,.public-article h2,.public-article h3,.public-article h4,.public-article-card h2,.article-empty-state b{color:var(--navy)!important}
+.brand-mark,.quote-trigger b{background:var(--navy)!important}
+.brand-mark svg{stroke:var(--logo-icon)!important}
+.articles-footer .brand-mark{color:var(--logo-icon)!important}
+.quote-trigger{background:var(--header-background)!important;color:var(--navy)!important;border-color:var(--line)!important}
+.quote-trigger b{color:var(--quick-add-text)!important}
+.menu-toggle{color:var(--navy)!important}
+.searchbar,.searchbar input,.filter-search input,.catalog-sort-label select,.sigma-cas-form input,.sigma-cas-form,.quote-send textarea,.qty-control input,.articles-list-tools input{background:var(--input-background)!important;color:var(--input-text)!important;border-color:var(--input-border)!important}
+.searchbar,.search-select{border-color:var(--input-border)!important}
+input::placeholder,textarea::placeholder{color:var(--placeholder-color)!important;opacity:1}
+.search-select span{color:var(--link-color)!important}
+.search-submit{background:var(--purple)!important;color:var(--search-text)!important}
+.search-submit:hover{background:color-mix(in srgb,var(--purple) 87%,black)!important}
+.nav-dropdown{background:var(--header-background)!important;border-color:var(--line)!important}
+.nav-dropdown a,.nav-dropdown-heading{color:var(--nav-text)!important}
+.nav-dropdown a:hover,.nav-dropdown-heading>a{color:var(--link-color)!important}
+.nav-category-symbol{color:var(--cyan)!important;background:var(--info-background)!important}
+.nav-dropdown-heading{border-color:var(--line)!important}
+/* The navigation band and its open panels follow the reference menu. */
+@media (min-width:721px){
+  .site-header > .nav{height:48px;gap:8px;font-size:14px;font-weight:700}
+  .site-header > .nav.nav-scrolled{display:none}
+  .site-header > .nav .nav-item{position:static}
+  .site-header > .nav .nav-item-head,.site-header > .nav > a{padding-inline:14px}
+  .site-header > .nav .nav-item.is-open .nav-item-head,.site-header > .nav > a:hover{background:var(--surface)!important}
+  .site-header > .nav .nav-item.is-open .nav-parent-link,.site-header > .nav .nav-item.is-open .nav-submenu-toggle,.site-header > .nav > a:hover{color:var(--ink)!important}
+  .site-header > .nav .nav-item.is-open .nav-item-head::after,.site-header > .nav > a:hover::after{display:none}
+  .site-header > .nav .nav-item.is-open .nav-submenu-toggle:hover{background:transparent}
+  .site-header > .nav .nav-dropdown{inset-inline-start:auto;inset-inline-end:auto;left:50%;right:auto;transform:translateX(-50%);width:100vw;min-height:360px;max-height:min(70vh,650px);padding:24px max(24px,calc(50vw - 620px));border:0;border-radius:0;box-shadow:0 18px 32px #102b4e1f;text-align:right}
+  .site-header > .nav .nav-dropdown-products{--nav-side:max(24px,calc(50vw - 620px));padding-inline:var(--nav-side)}
+  .site-header > .nav .nav-dropdown-products .nav-dropdown-heading{width:320px;margin:0;padding:8px 12px 16px;border:0;font-size:14px}
+  .site-header > .nav .nav-mega-grid{display:flex;flex-direction:column;gap:0;width:320px;min-height:295px;border-inline-end:1px solid var(--line)}
+  .site-header > .nav .nav-mega-group{position:static;padding:0;border:0;border-radius:0;background:transparent}
+  .site-header > .nav .nav-mega-group:hover,.site-header > .nav .nav-mega-group:focus-within{background:var(--soft)}
+  .site-header > .nav .nav-mega-title{min-height:49px;padding:10px 12px;font-size:15px;font-weight:500}
+  .site-header > .nav .nav-mega-title .nav-category-symbol,.site-header > .nav .nav-mega-group .nav-category-description{display:none}
+  .site-header > .nav .nav-mega-group .nav-subcategory-links{display:none;position:absolute;inset-block-start:26px;inset-inline-start:calc(var(--nav-side) + 340px);inset-inline-end:var(--nav-side);margin:0;padding:0 20px;align-content:start;gap:6px}
+  .site-header > .nav .nav-mega-group:hover .nav-subcategory-links,.site-header > .nav .nav-mega-group:focus-within .nav-subcategory-links{display:flex}
+  .site-header > .nav .nav-subcategory-links > a{border:0;background:transparent;font-size:13px}
+  .site-header > .nav .nav-dropdown-categories,.site-header > .nav .nav-dropdown-brands{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+  .site-header > .nav .nav-dropdown-categories > a,.site-header > .nav .nav-dropdown-brands > a{width:min(360px,100%);font-size:14px}
+  .site-header > .nav .nav-dropdown[hidden]{display:none!important}
+}
+@media (max-width:720px){
+  .site-header > .nav::before{display:none}
+  .site-header > .nav.nav-open{background:var(--surface);font-size:15px;font-weight:700}
+  .site-header > .nav,.site-header > .nav > a,.site-header > .nav .nav-parent-link,.site-header > .nav .nav-submenu-toggle{color:var(--ink)!important}
+  .site-header > .nav .nav-dropdown{box-shadow:none}
+}
+.nav-category-description,.nav-category-link small{color:var(--muted)!important}
+.hero{background:linear-gradient(105deg,var(--hero-start),var(--hero-middle) 53%,var(--hero-end))!important;color:var(--hero-title)!important}
+.hero h1,.hero .visual-caption b{color:var(--hero-title)!important}
+.hero-copy>p,.hero .visual-caption small{color:var(--hero-text)!important}
+.hero .eyebrow,.hero h1 em{color:var(--hero-accent)!important}
+.hero .eyebrow i{background:var(--hero-accent)!important}
+.hero-visual{background:radial-gradient(ellipse at 50% 55%,color-mix(in srgb,var(--illustration-accent) 23%,transparent),transparent 65%)}
+.molecule svg{stroke:var(--illustration-accent)}
+.molecule i{background:var(--illustration-accent);box-shadow:0 0 15px color-mix(in srgb,var(--illustration-accent) 65%,transparent)}
+.molecule i:nth-of-type(2){background:color-mix(in srgb,var(--illustration-accent) 45%,white)}
+.molecule i:nth-of-type(4){background:color-mix(in srgb,var(--illustration-accent) 25%,white)}
+.liquid{background:linear-gradient(90deg,color-mix(in srgb,var(--illustration-accent) 45%,transparent),color-mix(in srgb,var(--illustration-accent) 35%,transparent))}
+.caption-icon{color:var(--hero-accent);background:color-mix(in srgb,var(--illustration-accent) 25%,transparent)}
+.visual-label{color:color-mix(in srgb,var(--hero-text) 75%,transparent)}
+.orb-one{border-color:color-mix(in srgb,var(--illustration-accent) 35%,transparent);box-shadow:0 0 0 23px color-mix(in srgb,var(--illustration-accent) 4%,transparent),0 0 0 48px color-mix(in srgb,var(--illustration-accent) 3%,transparent)}
+.orb-two{background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--illustration-accent) 28%,transparent),color-mix(in srgb,var(--illustration-accent) 7%,transparent) 60%,transparent)}
+.button-primary{background:var(--primary-background)!important;color:var(--primary-text)!important;border-color:transparent!important}
+.button-primary:hover{background:var(--primary-hover)!important}
+.button-outline,.button-light,.category-more,.catalog-load-more,.public-article-share a{background:var(--secondary-background)!important;color:var(--secondary-text)!important;border-color:var(--secondary-border)!important}
+.button-outline:hover,.button-light:hover,.category-more:hover,.catalog-load-more:hover{background:color-mix(in srgb,var(--secondary-background) 90%,var(--cyan))!important}
+.hero .button-outline{background:var(--hero-outline-background)!important;color:var(--hero-outline-text)!important;border-color:var(--hero-outline-border)!important}
+.quick-add,.public-article-share button{background:var(--quick-add-background)!important;color:var(--quick-add-text)!important}
+.eyebrow,.product-category,.catalog-category-heading .eyebrow{color:var(--cyan)!important}
+.hero .eyebrow{color:var(--hero-accent)!important}
+.text-link,.back-to-articles,.public-article-body a,.public-article-card-copy>b,.quote-item-info small a,.filter-heading button,.category-empty a,.pubchem-source{color:var(--link-color)!important}
+.section-subtitle,.result-count,.category-text small,.catalog-category-count,.catalog-sort-label,.product-meta,.price-contact,.empty-state,.detail-description,.detail-brand,.detail-note,.drawer-intro,.quote-empty p,.quote-quantity-label,.qty-control .remove-item,.quote-send>p,.quote-send label,.seo-breadcrumbs,.seo-guide p,.articles-intro>p,.public-article-card p,.public-article-meta,.articles-list-tools,.public-article-excerpt{color:var(--muted)!important}
+.category-arrow,.nav-item-arrow{color:var(--muted)!important}
+.catalog-section{background:var(--soft)!important}
+.product-card,.category-card,.catalog-category-group,.brand-tile,.faq-item,.public-article-card,.public-article,.article-empty-state,.quote-drawer,.detail-modal,.quote-item,.suggestions,.suggestions button{background:var(--surface)!important;border-color:var(--line)!important}
+.filters{background:var(--filter-background)!important;border-color:var(--line)!important}
+.filter-heading,.filter-group,.filter-brand-group,.product-meta>div,.product-bottom,.detail-fields,.detail-fields>div,.quote-item,.drawer-head,.quote-send,.public-article-share{border-color:var(--line)!important}
+.check-row,.filter-search,.detail-fields span,.detail-fields b,.product-meta span,.product-meta b{color:var(--muted)!important}
+.check-row input{border-color:var(--input-border)!important}
+.check-row input:checked{border-color:var(--cyan)!important}
+.check-row input:checked:after{background:var(--cyan)!important}
+.filter-subcategory-toggle,.filter-brand-group>b,.active-filters button{color:var(--link-color)!important}
+.active-filters button{background:var(--info-background)!important;border-color:var(--line)!important}
+.filter-note,.catalog-page .filter-note,.pubchem-status,.suggestion-pubchem-status,.suggestion-icon,.sigma-search-link,.category-empty,.detail-art,.public-article-excerpt,.public-article-body blockquote,.public-article-tags span{background:var(--info-background)!important;color:var(--info-text)!important;border-color:var(--line)!important}
+.filter-note p,.pubchem-status,.sigma-search-link small,.sigma-cas-form>small,.category-empty p{color:var(--info-text)!important}
+.product-visual,.catalog-page .product-visual{background:linear-gradient(145deg,var(--product-image-start),var(--product-image-end))!important}
+.product-visual:after,.catalog-page .product-visual:after{background:var(--product-image-circle)!important}
+.product-brand,.catalog-page .product-brand{background:var(--product-badge-background)!important;color:var(--product-badge-text)!important;border-color:var(--line)!important}
+.product-title,.catalog-page .product-title{color:var(--product-title)!important}
+.product-title:hover,.catalog-page .product-title:hover{color:var(--link-color)!important}
+.add-quote,.catalog-page .add-quote{background:var(--quote-button-background)!important;color:var(--quote-button-text)!important;border-color:var(--quote-button-border)!important}
+.add-quote:hover,.catalog-page .add-quote:hover{background:color-mix(in srgb,var(--quote-button-background) 85%,var(--cyan))!important}
+.category-icon,.cat-0 .category-icon{background:var(--category-0-background)!important;color:var(--category-0-text)!important}
+.cat-1 .category-icon{background:var(--category-1-background)!important;color:var(--category-1-text)!important}
+.cat-2 .category-icon{background:var(--category-2-background)!important;color:var(--category-2-text)!important}
+.cat-3 .category-icon{background:var(--category-3-background)!important;color:var(--category-3-text)!important}
+.cat-4 .category-icon{background:var(--category-4-background)!important;color:var(--category-4-text)!important}
+.brand-symbol,.sigma .brand-symbol,.nav-brand-link.sigma .nav-brand-symbol{color:var(--brand-sigma)!important}
+.merck .brand-symbol,.nav-brand-link.merck .nav-brand-symbol{color:var(--brand-merck)!important}
+.supelco .brand-symbol,.nav-brand-link.supelco .nav-brand-symbol{color:var(--brand-supelco)!important}
+.millipore .brand-symbol,.nav-brand-link.millipore .nav-brand-symbol{color:var(--brand-millipore)!important}
+.brand-tile b{color:var(--navy)!important}.brand-tile small{color:var(--muted)!important}
+.nav-brand-symbol{background:var(--info-background)!important}
+.faq-item summary{color:var(--navy)!important}
+.faq-item summary>span:first-child{color:inherit!important;background:transparent!important}
+.faq-item summary>span[aria-hidden=true]{background:var(--faq-icon-background)!important;color:var(--faq-icon-text)!important}
+.faq-answer,.faq-answer p,.faq-answer bdi{color:var(--faq-answer)!important}
+.about-band{background:var(--about-background)!important;color:var(--about-title)!important}
+.about-band h2{color:var(--about-title)!important}.about-band .eyebrow{color:var(--cyan)!important}
+.about-band p{color:var(--about-text)!important}
+footer,.articles-footer{background:var(--footer-background)!important;border-color:var(--line)!important}
+.footer-main h3{color:var(--footer-heading)!important}
+.footer-brand>p,.footer-main>div:not(.footer-brand)>a:not(.contact-action),.footer-main .contact-line,.footer-bottom,.articles-footer>.container{color:var(--footer-text)!important}
+.footer-bottom{border-color:var(--line)!important}
+.footer-main>div>a:hover,.footer-main .contact-action{color:var(--link-color)!important}
+.public-article-body{color:var(--ink)!important}
+.public-article-excerpt,.public-article-body blockquote{border-inline-start-color:var(--cyan)!important;border-right-color:var(--cyan)!important}
+.public-article-meta span{color:var(--cyan)!important}
+.article-card-placeholder{background:linear-gradient(145deg,var(--info-background),var(--soft))!important;color:var(--cyan)!important}
+.suggestions button:hover{background:var(--info-background)!important;color:var(--input-text)!important}
+.suggestions b,.sigma-cas-form label{color:var(--input-text)!important}.suggestions small,.suggestion-empty{color:var(--muted)!important}
+.sigma-cas-form button{background:var(--quick-add-background)!important;color:var(--quick-add-text)!important}
+.quote-empty b,.quote-item-info b{color:var(--navy)!important}
+.detail-close,#quote-close{background:var(--surface)!important;color:var(--navy)!important;border-color:var(--line)!important}
+.contact-action{border-color:var(--line)!important}
+
+.button-whatsapp{background:var(--whatsapp-background)!important;color:var(--whatsapp-text)!important}
+.button-whatsapp:hover{background:color-mix(in srgb,var(--whatsapp-background) 88%,black)!important}
+.button-email{background:var(--email-background)!important;color:var(--email-text)!important;border-color:var(--secondary-border)!important}
+.toast{background:var(--toast-background)!important;color:var(--toast-text)!important}
+.about-icon svg{stroke:var(--about-icon)!important}
+.quote-item-art{background:var(--info-background)!important}
+.product-illustration .art-halo{fill:var(--product-image-circle)!important}
+.product-illustration .art-lines{stroke:var(--illustration-accent)!important}
+.product-illustration .art-dot{fill:var(--illustration-accent)!important}
+.product-illustration stop:first-child{stop-color:color-mix(in srgb,var(--illustration-accent) 20%,white)}
+.product-illustration stop:last-child{stop-color:var(--illustration-accent)}
+
+/* Motion preview: restrained laboratory-inspired scroll reveals. */
+.lab-reveal{opacity:0;translate:0 16px;transition:opacity .58s ease,translate .58s cubic-bezier(.2,.75,.25,1);transition-delay:var(--lab-delay,0ms)}
+.lab-reveal.lab-visible{opacity:1;translate:0 0}
+.lab-reveal.section-head h2{position:relative;width:fit-content}
+.lab-reveal.section-head h2::after{content:"";position:absolute;inset-inline-start:0;bottom:-5px;width:46px;height:2px;border-radius:2px;background:var(--cyan);scale:0 1;transform-origin:right center;transition:scale .5s ease .16s}
+.lab-reveal.lab-visible.section-head h2::after{scale:1 1}
+.lab-hero-active .orb-one{animation:lab-orb-breathe 8s ease-in-out infinite}
+.lab-hero-active .molecule i{animation:lab-atom-breathe 4s ease-in-out infinite}
+.lab-hero-active .molecule i:nth-of-type(2){animation-delay:-1s}
+.lab-hero-active .molecule i:nth-of-type(3){animation-delay:-2s}
+.lab-hero-active .molecule i:nth-of-type(4){animation-delay:-3s}
+@keyframes lab-orb-breathe{50%{scale:1.045;opacity:.8}}
+@keyframes lab-atom-breathe{50%{scale:1.18;opacity:.7}}
+@media(prefers-reduced-motion:reduce){html:not(.motion-preview-force) .lab-reveal{opacity:1;translate:none;transition:none}html:not(.motion-preview-force) .lab-reveal.section-head h2::after{scale:1 1;transition:none}html:not(.motion-preview-force) .lab-hero-active .orb-one,html:not(.motion-preview-force) .lab-hero-active .molecule i{animation:none}}

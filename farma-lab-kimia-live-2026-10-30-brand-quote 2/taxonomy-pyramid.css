@@ -1,0 +1,36 @@
+/* The pyramid uses the site's existing category cards and filter surface. */
+body.catalog-page #categories{display:block}
+.taxonomy-search{display:block;max-width:470px;margin:0 0 18px;color:#34536b;font:600 13px/1.5 "Vazirmatn",sans-serif}
+.taxonomy-search>span{display:block;margin-bottom:7px}
+.taxonomy-search input,.taxonomy-editor-browser input,.taxonomy-editor-fields input{box-sizing:border-box;width:100%;min-height:45px;border:1px solid #c7d7de;border-radius:11px;background:#fff;color:#102b4e;padding:10px 14px;font:500 16px/1.5 "Vazirmatn",sans-serif}
+.taxonomy-search input:focus,.taxonomy-editor-browser input:focus,.taxonomy-editor-fields input:focus{outline:2px solid #45aeb2;outline-offset:1px}
+.taxonomy-trail{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px;margin:0 0 5px;font-size:12px}
+.taxonomy-trail a{color:#297f86;text-decoration:none}.taxonomy-trail a:last-child{color:#102b4e;font-weight:700}
+.category-card .category-text{min-width:0}.category-card .category-text small[lang=en]{display:block;max-width:100%;white-space:normal;text-align:right;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;color:#627d90;font:500 11px/1.45 "DM Sans",sans-serif}
+.category-card .category-text .taxonomy-card-path{display:block;max-width:100%;white-space:normal;color:#77909b;font-size:9px;line-height:1.5}
+.taxonomy-leaf-note{grid-column:1/-1;padding:20px 22px;border:1px solid #dce9ec;border-radius:13px;background:#fff;color:#506c80;font-size:13px}
+.taxonomy-back{border-style:dashed!important;background:#f5fafa!important}
+.taxonomy-filter-branch>.filter-category-line{min-width:0}
+.taxonomy-filter-branch .filter-category-choice{min-width:0}
+.taxonomy-filter-branch .filter-category-choice>span{overflow-wrap:anywhere}
+.taxonomy-filter-branch .filter-subcategory-list{display:block;margin-top:2px;margin-bottom:7px;padding-inline-start:9px}
+.taxonomy-filter-branch .filter-subcategory-list[hidden]{display:none}
+.taxonomy-filter-branch[data-taxonomy-depth]:not([data-taxonomy-depth="0"])>.filter-category-line .filter-category-choice{min-height:34px;color:#738798!important;font-size:10px}
+.taxonomy-filter-branch[data-taxonomy-depth]:not([data-taxonomy-depth="0"])>.filter-category-line .filter-category-choice>span{font-weight:500}
+body.catalog-page .catalog-layout>.filters{position:static;top:auto;max-height:none;overflow:visible;overscroll-behavior:auto}
+.taxonomy-editor-meta,.taxonomy-editor-layout,.taxonomy-editor-actions,.taxonomy-editor-heading,.taxonomy-editor-fields{display:flex;gap:16px}
+.taxonomy-editor-meta{justify-content:space-between;margin:14px 0;color:#657d8e;font-size:12px}
+.taxonomy-editor-layout{align-items:flex-start}
+.taxonomy-editor-browser,.taxonomy-editor-detail{border:1px solid #dce7ed;border-radius:17px;background:#fff;box-shadow:0 10px 30px #102b4e0b;padding:19px}
+.taxonomy-editor-browser{width:min(35%,360px);flex:0 0 min(35%,360px)}.taxonomy-editor-detail{flex:1;min-width:0}
+.taxonomy-editor-browser label{display:block;font-size:12px;font-weight:700;color:#34536b}.taxonomy-editor-browser input{margin-top:7px}
+.taxonomy-admin-list{display:grid;gap:5px;max-height:440px;overflow:auto;margin:14px 0}
+.taxonomy-list-label{margin:0 0 5px;color:#788c9b;font-size:11px}
+.taxonomy-admin-row{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-width:0;border:1px solid transparent;border-radius:9px;background:#f6f9fa;color:#163959;padding:9px 10px;text-align:right;cursor:pointer}
+.taxonomy-admin-row:hover,.taxonomy-admin-row.is-active{border-color:#a5d4d1;background:#ebf6f4}.taxonomy-admin-row span{min-width:0}.taxonomy-admin-row b,.taxonomy-admin-row small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.taxonomy-admin-row b{font-size:12px}.taxonomy-admin-row small{font:500 11px "DM Sans",sans-serif;color:#6c8291}.taxonomy-admin-row em{font-style:normal;color:#9a594a;font-size:10px}.taxonomy-admin-row i{font-style:normal}
+.taxonomy-editor-path{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:15px}.taxonomy-editor-path button{border:0;background:none;color:#287e87;cursor:pointer;font:600 11px "Vazirmatn",sans-serif}
+.taxonomy-editor-heading{justify-content:space-between;align-items:center}.taxonomy-editor-heading h3{margin:0}.taxonomy-editor-heading small{color:#7c90a0}
+.taxonomy-editor-fields{margin:18px 0}.taxonomy-editor-fields label{flex:1;min-width:0;color:#34536b;font-size:12px;font-weight:700}.taxonomy-editor-fields input{margin-top:7px}
+.taxonomy-visibility{display:flex;align-items:center;gap:9px;font-weight:700;color:#164b62}.taxonomy-visibility input{width:19px;height:19px}
+.taxonomy-editor-detail>p{color:#6b8291;font-size:12px}.taxonomy-editor-actions{margin:20px 0}.taxonomy-editor-detail h4{margin:20px 0 5px}.taxonomy-editor-detail>.taxonomy-admin-list{max-height:260px}
+@media(max-width:760px){.taxonomy-editor-layout,.taxonomy-editor-fields{display:block}.taxonomy-editor-browser{width:auto;margin-bottom:14px}.taxonomy-editor-fields label{display:block;margin-bottom:12px}.taxonomy-admin-list{max-height:250px}.taxonomy-editor-actions{flex-wrap:wrap}}

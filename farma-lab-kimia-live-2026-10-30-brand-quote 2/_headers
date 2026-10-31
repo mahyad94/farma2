@@ -1,0 +1,10 @@
+/admin
+  X-Robots-Tag: noindex, nofollow
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+/deployment/*
+  X-Robots-Tag: noindex, nofollow
+/deployment.zip
+  X-Robots-Tag: noindex, nofollow
+/*.csv
+  X-Robots-Tag: noindex

@@ -1,0 +1,44 @@
+/* Catalog facets shared by the homepage previews and the full catalog. */
+.catalog-layout>.filters{max-height:calc(100dvh - 165px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c6d9df transparent}
+.filters .filter-category-group>#category-filters{display:block;margin-top:9px}
+.filter-category-branch{margin:3px 0;border:1px solid transparent;border-radius:9px}
+.filter-category-line{display:flex;align-items:center;min-width:0;border-radius:8px;transition:background .15s ease}
+.filter-category-branch.is-selected>.filter-category-line{background:#edf7f5}
+.filters .filter-category-choice{display:flex;flex:1;min-width:0;min-height:39px;margin:0;padding:8px 7px;gap:7px;border:0;background:transparent;font-size:11px;line-height:1.6}
+.filters .filter-category-choice:hover{background:transparent}
+.filter-category-choice>span,.filter-subcategory-choice>span{min-width:0}
+.filter-option-count{flex:0 0 auto;margin-inline-start:auto;color:#8a9ca9;font:500 10px "Vazirmatn",sans-serif;font-variant-numeric:tabular-nums}
+.filter-branch-toggle{display:grid;place-items:center;flex:0 0 27px;width:27px;height:29px;margin-inline-end:3px;padding:0;border:0;border-radius:6px;background:transparent;color:#6c909b;cursor:pointer}
+.filter-branch-toggle:hover{background:#dfefed;color:#237c85}
+.filter-branch-toggle:focus-visible{outline:2px solid #45aeb2;outline-offset:1px}
+.filter-branch-toggle svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s ease}
+.filter-branch-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.filter-subcategory-list{margin:3px 9px 10px 0;padding-inline-start:9px;border-inline-start:1px solid #d8e7e8}
+.filter-subcategory-list[hidden]{display:none}
+.filters .filter-subcategory-choice{display:flex;min-width:0;min-height:34px;margin:2px 0;padding:6px 7px;gap:7px;border:1px solid transparent;border-radius:7px;color:#738798;font-size:10px;line-height:1.65}
+.filters .filter-subcategory-choice:hover{background:#f3f8f9}
+.filters .filter-subcategory-choice:has(input:checked){border-color:#d5e7e5;background:#edf7f5;color:#286d76}
+.filters .filter-subcategory-choice input{flex:0 0 13px;width:13px;height:13px}
+.filters .check-row input[type="radio"]{border-radius:50%}
+.filters .filter-subcategory-choice input:checked:after{width:5px;height:5px;border-radius:50%}
+.filters .filter-brand-group>#brand-filters{display:grid;grid-template-columns:1fr;gap:4px;margin-top:9px}
+.filters .filter-brand-choice{display:flex;min-width:0;min-height:37px;margin:0;padding:8px 7px;gap:8px;border:1px solid transparent;border-radius:8px;color:#5b7286;font-size:11px;line-height:1.5}
+.filters .filter-brand-choice>span{min-width:0;text-align:left;overflow-wrap:anywhere;font:500 11px/1.6 "DM Sans",sans-serif}
+.filters .filter-brand-choice:hover{background:#f3f8f9}
+.filters .filter-brand-choice:has(input:checked){border-color:#d2e7e4;background:#edf7f5;color:#286d76}
+.filters .filter-brand-choice input{flex:0 0 15px;width:15px;height:15px;border-radius:4px}
+.filters .filter-brand-choice input:checked{border-color:#308e93;background:#308e93}
+.filters .filter-brand-choice input:checked:after{width:8px;height:5px;margin-top:-2px;border-left:2px solid #fff;border-bottom:2px solid #fff;border-radius:0;background:transparent;transform:rotate(-45deg)}
+.category-more{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;text-decoration:none}
+.catalog-load-more{text-decoration:none}
+.active-filters button bdi{font-family:"DM Sans",sans-serif}
+@media(max-width:720px){
+  .catalog-layout>.filters{max-height:none;overflow:visible;overscroll-behavior:auto}
+  .filters .filter-category-group>#category-filters{display:block;grid-template-columns:1fr}
+  .filters .filter-category-choice{min-height:41px;padding-block:9px;font-size:11px}
+  .filters .filter-subcategory-choice{min-height:38px;font-size:11px}
+  .filters .filter-brand-group>#brand-filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .filters .filter-brand-choice{min-height:43px;padding-inline:6px;gap:6px}
+  .filters .filter-brand-choice>span{font-size:10px}
+  .filter-branch-toggle{width:31px;height:31px;flex-basis:31px}
+}

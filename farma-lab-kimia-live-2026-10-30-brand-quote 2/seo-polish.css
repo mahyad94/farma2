@@ -1,0 +1,10 @@
+/* Keep the visible catalog H1 in the existing visual hierarchy. */
+.catalog-page .catalog-section .section-head .catalog-title{margin:4px 0 2px;color:var(--navy);font:800 26px/1.45 "Vazirmatn",sans-serif;letter-spacing:-.025em}
+@media(max-width:720px){.catalog-page .catalog-section .section-head .catalog-title{margin:0;font-size:21px;line-height:1.55}}
+
+.catalog-pagination{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;margin:22px 0 5px;font:700 12px "Vazirmatn",sans-serif}
+.catalog-pagination[hidden]{display:none}
+.catalog-pagination a,.catalog-pagination>span{display:grid;place-items:center;min-width:36px;min-height:36px;padding:5px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--link-color)}
+.catalog-pagination a:hover{border-color:var(--cyan);background:var(--info-background)}
+.catalog-pagination a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.catalog-pagination [aria-current="page"]{border-color:var(--cyan);background:var(--info-background);color:var(--navy)}
